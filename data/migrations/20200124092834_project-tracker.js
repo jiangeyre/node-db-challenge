@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema
         .createTable('projects', tbl => {
@@ -25,17 +24,17 @@ exports.up = function(knex) {
                 .unsigned()
                 .notNullable()
                 .references('tasks.id');
-            tbl.string('description', 255).notNullable();
-            tbl.string('notes', 128).notNullable();
-            tbl.boolean('completed').notNullable();
             tbl
                 .integer('project_id')
                 .unsigned()
                 .notNullable()
-                .references('projects.id')
+                .references('id')
                 .inTable('projects')
                 .onDelete('RESTRICT')
                 .onUpdate('CASCADE');
+            tbl.string('description', 255).notNullable();
+            tbl.string('notes', 128).notNullable();
+            tbl.boolean('completed').notNullable();
         })
         .createTable('project_resources', tbl => {
             tbl.increments();
@@ -43,16 +42,16 @@ exports.up = function(knex) {
               .integer('project_id')
               .unsigned()
               .notNullable()
-              .references('projects.id')
+              .references('id')
               .inTable('projects')
               .onDelete('RESTRICT')
               .onUpdate('CASCADE');
-    
+
             tbl
               .integer('resource_id')
               .unsigned()
               .notNullable()
-              .references('resources.id')
+              .references('id')
               .inTable('resources')
               .onDelete('RESTRICT')
               .onUpdate('CASCADE');
@@ -65,4 +64,4 @@ exports.down = function(knex) {
         .dropTableIfExists('tasks')
         .dropTableIfExists('resources')
         .dropTableIfExists('projects') 
-};
+}; 

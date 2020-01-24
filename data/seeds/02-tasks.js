@@ -5,6 +5,7 @@ exports.seed = function(knex) {
       return knex('tasks').insert([
         {
           id: 1,
+          task_number: 1,
           project_id: 1,
           description: 'Burn the witch',
           notes: 'Persecution at its finest.',
@@ -12,6 +13,7 @@ exports.seed = function(knex) {
         },
         {
           id: 2,
+          task_number: 2,
           project_id: 2,
           description: 'Kill the seabird',
           notes: 'HARK, it is bad luck to kill a seabird.',
@@ -19,6 +21,7 @@ exports.seed = function(knex) {
         },
         {
           id: 3,
+          task_number: 3,
           project_id: 3,
           description: 'Drink the weird tea.',
           notes: 'Make unintelligle screams.',
@@ -26,6 +29,7 @@ exports.seed = function(knex) {
         },
         {
           id: 4,
+          task_number: 4,
           project_id: 4,
           description: 'Make a nut chocolate cake',
           notes: 'Hope ya do not have allergies',
