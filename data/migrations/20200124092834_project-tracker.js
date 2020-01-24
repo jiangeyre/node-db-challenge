@@ -37,30 +37,26 @@ exports.up = function(knex) {
                 .onDelete('RESTRICT')
                 .onUpdate('CASCADE');
         })
-        // .createTable('resources', tbl => {
-        //     tbl.increments();
-        //     tbl
-        //         .integer('project_id')
-        //         .unsigned()
-        //         .notNullable()
-        //         .references('id')
-        //         .inTable('projects.id')
-        //         .onDelete('RESTRICT')
-        //         .onUpdate('CASCADE');
-        //     tbl
-        //         .integer('resource_id')
-        //         .unsigned()
-        //         .notNullable()
-        //         .references('resource.id')
-        //         .inTable('resources')
-        //         .onDelete('RESTRICT')
-        //         .onUpdate('CASCADE');
-        //     tbl
-        //         .string('name', 128)
-        //         .unique()
-        //         .notNullable();
-        //     tbl.string('description', 128);
-        // })
+        .createTable('project_resources', tbl => {
+            tbl.increments();
+            tbl
+              .integer('project_id')
+              .unsigned()
+              .notNullable()
+              .references('projects.id')
+              .inTable('projects')
+              .onDelete('RESTRICT')
+              .onUpdate('CASCADE');
+    
+            tbl
+              .integer('resource_id')
+              .unsigned()
+              .notNullable()
+              .references('resources.id')
+              .inTable('resources')
+              .onDelete('RESTRICT')
+              .onUpdate('CASCADE');
+        })
 };
 
 exports.down = function(knex) {
